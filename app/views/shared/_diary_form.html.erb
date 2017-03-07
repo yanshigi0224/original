@@ -1,0 +1,8 @@
+<%= form_for(@diary) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :title, placeholder:"Title" %>
+    <%= f.text_area :content, placeholder: "Content" %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

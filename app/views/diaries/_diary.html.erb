@@ -1,0 +1,13 @@
+<li id="diary-<%= diary.id %>">
+  <%= link_to gravatar_for(diary.user, size: 50), diary.user %>
+  <span class="user"><%= link_to diary.user.name, diary.user %></span>
+  <span class="title"><%= diary.title %></span>
+  <span class="content"><%= diary.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(diary.created_at) %> ago.
+    <% if current_user == diary.user %>
+      <%= link_to "delete", diary, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>
