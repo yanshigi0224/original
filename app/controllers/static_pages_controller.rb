@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @diary = current_user.diaries.build if logged_in?
-  end
+    if logged_in?
+      @diary = current_user.diaries.build
+      @feed_items = current_user.feed_items.includes(:user).order(created_at: :desc)
+    end  end
 end
