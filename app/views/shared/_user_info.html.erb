@@ -1,4 +1,15 @@
 <%= link_to gravatar_for(current_user, size: 50), current_user %>
-<h1><%= current_user.name %></h1>
-<span><%= link_to "view my profile", current_user %></span>
-<span><%= pluralize(current_user.diaries.count, "diary") %></span>
+    <h1><%= current_user.name %></h1>
+    <span><%= link_to "プロフィールを見る", current_user %></span>
+    <span><%= pluralize(current_user.diaries.count, "diary") %></span>
+    <% if current_user.location.presence %><span class="location">地域 : <%= current_user.location %></span><br><% end %>
+    <% if current_user.hobby.presence %><span class="hobby">趣味 : <%= current_user.hobby %></span><br><% end %>
+    <% if current_user.thema.presence %><span class="thema">テーマ : <%= current_user.thema %></span><br><% end %>
+    <span class="follow-followed">
+      <%= link_to "フォロー",followings_user_path(current_user) %>(<%= current_user.following_users.count %>) /
+      <%= link_to "フォロワー", followers_user_path(current_user) %>(<%= current_user.follower_users.count %>)
+    </span>
+    <span class="diary-post">
+      <br>
+      <%= link_to "日記を書く", new_diary_user_path(current_user) %>
+    </span>

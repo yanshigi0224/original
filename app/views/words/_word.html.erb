@@ -1,0 +1,11 @@
+<h4>用語検索</h4>
+<%= form_for current_user.words.build do |f| %>
+      <%= f.text_field :keyword, placeholder:"英語/日本語" %>
+      <%= f.submit "検索", class: "btn btn-primary" %>
+<% end %>
+<h4>検索履歴</h4>
+<div class="history">
+        <% current_user.words.limit(20).order(created_at: :desc).each do |word| %>
+            <%= link_to word.keyword, URI.escape("http://ejje.weblio.jp/content/#{word.keyword}"), target:"_blank" %><br>
+        <% end %>
+</div>

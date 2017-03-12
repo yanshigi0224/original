@@ -1,32 +1,32 @@
-<h1>Edit</h1>
+<h1>登録情報変更</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %> 
 
-      <%= f.label :name %>
+      <%= f.label :name,"名前" %>
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
       
-      <%= f.label :location %>
+      <%= f.label :location, "地域" %>
       <%= f.text_field :location, class: 'form-control' %>
       
-      <%= f.label :hobby %>
+      <%= f.label :hobby, "趣味" %>
       <%= f.text_field :hobby, class: 'form-control' %>
       
-      <%= f.label :thema %>
+      <%= f.label :thema, "テーマ" %>
       <%= f.text_field :thema, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :password, "パスワード (変更)" %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :password_confirmation, "パスワード確認" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Update", class: "btn btn-primary" %>
+      <%= f.submit "更新", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

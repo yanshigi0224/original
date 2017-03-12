@@ -111,6 +111,13 @@ input {
 aside {
   section.user_info {
     margin-top: 20px;
+    .info_top{
+      margin: 20px 0 ;
+      display: block;
+    }
+    .info_body{
+      margin: 20px 0;
+    }
   }
   section {
     padding: 10px 0;
@@ -185,4 +192,14 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+.history{
+  padding:10px;
+  margin:10px;
+  border:1px solid #bbb;
+}
+
+.content{
+  word-break: break-all;
 }

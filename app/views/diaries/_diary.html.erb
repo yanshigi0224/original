@@ -1,13 +1,16 @@
 <li id="diary-<%= diary.id %>">
   <%= link_to gravatar_for(diary.user, size: 50), diary.user %>
   <span class="user"><%= link_to diary.user.name, diary.user %></span>
-  <span class="title"><%= diary.title %></span>
-  <span class="content"><%= diary.content %></span>
+  <h3 class="title"><%= diary.title %></h3>
+  <span class="content">
+    <%= truncate(diary.content) %><br>
+    <%= link_to "本文を読む", diary_path(diary) %>
+  </span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(diary.created_at) %> ago.
+    ( Written on <%= diary.created_at.strftime("%Y-%m-%d %H:%M:%S") %> )
     <% if current_user == diary.user %>
-      <%= link_to "delete", diary, method: :delete,
-                                       data: { confirm: "You sure?" } %>
+      <%= link_to "削除", diary, method: :delete,
+                                       data: { confirm: "削除しますか？" } %>
     <% end %>
   </span>
 </li>

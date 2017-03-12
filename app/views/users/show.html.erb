@@ -1,19 +1,43 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
+      <div class="info_top">
+        <h1>
+          <span class="icon"><%= gravatar_for @user %></span><br><br><br>
+          <span class="name">名前 : <%= @user.name %></span>
+        </h1>
+      </div>
+      <hr>
+      <div class="info_body">
+        <% if @user.location.presence %><span class="location">地域 : <%= @user.location %></span><br><% end %>
+        <% if @user.hobby.presence %><span class="hobby">趣味 : <%= @user.hobby %></span><br><% end %>
+        <% if @user.thema.presence %><span class="thema">テーマ : <%= @user.thema %></span><br><% end %>
+        <span class="follow-followed">
+          <%= link_to "フォロー",followings_user_path(@user) %> /
+          <%= link_to "フォロワー", followers_user_path(@user) %>
+        </span>
+      </div>
     </section>
+        <%= render 'follow_form' if logged_in? %>
+        <%= render 'words/word' if current_user==@user %>
   </aside>
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
       <% if @user.diaries.any? %>
         <h3>Diaries (<%= @user.diaries.count %>)</h3>
-        <ol class="diaries">
-          <%= render @diaries %>
+        <% @user.diaries.each do |diary| %>
+        <ol id="diary-<%= diary.id %>">
+            <h3 class="title">タイトル : <%= diary.title %></h3>
+            <span class="content"><%= diary.content %></span><br>
+            <span class="timestamp">
+              ( Written on <%= diary.created_at.strftime("%Y-%m-%d %H:%M:%S") %> )
+              <% if current_user == diary.user %>
+                <%= link_to "削除", diary, method: :delete,
+                                                 data: { confirm: "削除しますか？" } %>
+              <% end %>
+            </span>
         </ol>
+        <hr>
+        <% end %>
       <% end %>
   </div>
 </div>

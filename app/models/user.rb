@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
     validates :thema,length:{maximum:30}
     has_many :diaries ,class_name:"Diary"
     
+    has_many :words
+    
     has_many :following_relationships, class_name:  "Relationship",
                                      foreign_key: "follower_id",
                                      dependent:   :destroy

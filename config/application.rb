@@ -29,6 +29,7 @@ module Original
       g.helper false
       g.test_framework false
     end
+    config.time_zone = 'Tokyo'
     
     config.action_view.embed_authenticity_token_in_remote_forms = true
   end

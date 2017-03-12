@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     if (current_user != @user)
       redirect_to root_path
       return
-    end   
+    end
     
     if (@user.update(user_profile))
       redirect_to @user
@@ -40,7 +40,26 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
+  
+  def followings
+    @user = User.find(params[:id])
+    @f_users = @user.following_users
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @f_users = @user.follower_users
+  end
+  
+  def user_diaries
+    @user = User.find(params[:id])
+    @user_diaries = @user.diaries
+  end
+  
+  def new_diary
+    
+  end
+  
   private
 
   def user_params
