@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170310005007) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "words", ["user_id", "created_at"], name: "index_words_on_user_id_and_created_at"
   add_index "words", ["user_id"], name: "index_words_on_user_id"
 
 end
