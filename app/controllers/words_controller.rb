@@ -3,7 +3,7 @@ class WordsController < ApplicationController
       def create
         @word = current_user.words.build(word_params)
             if @word.save
-              redirect_to root_url
+              redirect_to :back
               #link_to URI.escape("http://ejje.weblio.jp/content/#{@word.keyword}"), 
               #:onclick=>"window.open(this.href, 'height=400, width=800');return false;"
               #redirect_to URI.escape("http://ejje.weblio.jp/content/#{@word.keyword}"), target:"_blank"
