@@ -26,8 +26,9 @@
         <h3>Diaries (<%= @user.diaries.count %>)</h3>
         <% @user.diaries.each do |diary| %>
         <ol id="diary-<%= diary.id %>">
-            <h3 class="title">タイトル : <%= diary.title %></h3>
+            <h3 class="title"><%= diary.title %></h3>
             <span class="content"><%= diary.content %></span><br>
+                <%= link_to "本文を読む", diary_path(diary) %><br>
             <span class="timestamp">
               ( Written on <%= diary.created_at.strftime("%Y-%m-%d %H:%M:%S") %> )
               <% if current_user == diary.user %>

@@ -10,7 +10,7 @@
       <%= link_to gravatar_for(@diary.user, size: 50), @diary.user %>
       <span class="user"><%= link_to @diary.user.name, @diary.user %></span><br>
       <h3 class="title"><%= @diary.title %></h3><br>
-      <span class="content"><%= @diary.content %></span><br>
+      <span class="content"><%= @diary.content %><br></span><br>
       <span class="timestamp">
         ( Written on <%= @diary.created_at.strftime("%Y-%m-%d %H:%M:%S") %> )
         <% if current_user == @diary.user %>
